@@ -96,6 +96,22 @@
   </div>
 
 <script>
+const inputs = document.querySelectorAll('.inbox input[type="checkbox"]');
+const inputsArray = Array.from(inputs)
+
+function handleClick(e){
+  if(e.shiftKey){
+    const checkedBoxes = inputsArray.filter((input)=>input.checked === true);
+    const indexes = checkedBoxes.map((checkedBox) => inputsArray.indexOf(checkedBox))
+    inputs.forEach((input,index)=>{
+      if(index> indexes[0] && index<indexes[indexes.length-1]){
+      input.checked = true;
+      }
+    })
+  }
+}
+  inputs.forEach((input)=> input.addEventListener("click", handleClick))
+    
 </script>
 </body>
 </html>
